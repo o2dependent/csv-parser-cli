@@ -16,7 +16,6 @@ program
 	.command("to-json [input] [output]")
 	.description("Converts a CSV file to JSON")
 	.action(async (input?: string, output?: string) => {
-		console.log(input?.split?.("."));
 		if (!input || (input?.split?.(".")?.at(-1) ?? "") !== "csv")
 			return console.log(chalk.red("Please provide a valid CSV file"));
 
@@ -75,7 +74,6 @@ program
 			keys.forEach((key, index) => {
 				obj[key] = toType(rowValues[index], types[index]);
 			});
-			console.log(chalk.bgCyanBright(JSON.stringify(obj, null, 2)));
 			return obj;
 		});
 
