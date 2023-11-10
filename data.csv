@@ -1,4 +1,5 @@
-name,age
-Ethan,25
-Destiny,24
-Charlie,18
+name,age,ip
+Ethan,25,128.3.4.51
+Destiny,24,152.3.4.51
+Charlie,18,563.3.4.51
+Brocky,18,563.3.4.51

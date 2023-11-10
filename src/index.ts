@@ -4,6 +4,9 @@ import { createCommand } from "commander";
 import { version } from "../package.json";
 import inquirer from "inquirer";
 import chalk from "chalk";
+import { getTypes } from "./utils/getTypes";
+import { toType } from "./utils/toType";
+import { AllTypes } from "./types/AllTypes";
 
 const program = createCommand();
 
@@ -48,7 +51,8 @@ program
 
 		if (!text) return console.log(chalk.red("File is empty!"));
 
-		const rows = text.split("\n");
+		const rows = text.split("\n").filter((row) => row);
+		let types: AllTypes[] = [];
 
 		const isOnlyHeader = rows.length === 1;
 
@@ -58,17 +62,18 @@ program
 					"File has only one row! Keys will be created, but values will be null.",
 				),
 			);
+		else types = getTypes(rows[1].split(","));
 
 		const keys = rows[0].split(",");
 		const values = isOnlyHeader
 			? [new Array(keys.length).fill("null").join(",")]
-			: rows.slice(1, -1);
+			: rows.slice(1);
 
 		const data = values.map((row) => {
 			const obj: any = {};
 			const rowValues = row.split(",");
 			keys.forEach((key, index) => {
-				obj[key] = rowValues[index];
+				obj[key] = toType(rowValues[index], types[index]);
 			});
 			console.log(chalk.bgCyanBright(JSON.stringify(obj, null, 2)));
 			return obj;

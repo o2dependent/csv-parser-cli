@@ -2,11 +2,19 @@
   "data": [
     {
       "name": "Ethan",
-      "age": "25"
+      "age": 25
     },
     {
       "name": "Destiny",
-      "age": "24"
+      "age": 24
+    },
+    {
+      "name": "Charlie",
+      "age": 18
+    },
+    {
+      "name": "Brocky",
+      "age": 18
     }
   ]
 }
