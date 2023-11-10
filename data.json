@@ -2,19 +2,23 @@
   "data": [
     {
       "name": "Ethan",
-      "age": 25
+      "age": 25,
+      "ip": "128.3.4.51"
     },
     {
       "name": "Destiny",
-      "age": 24
+      "age": 24,
+      "ip": "152.3.4.51"
     },
     {
       "name": "Charlie",
-      "age": 18
+      "age": 18,
+      "ip": "563.3.4.51"
     },
     {
       "name": "Brocky",
-      "age": 18
+      "age": 18,
+      "ip": "563.3.4.51"
     }
   ]
 }

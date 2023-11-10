@@ -55,13 +55,14 @@ program
 
 		const isOnlyHeader = rows.length === 1;
 
-		if (isOnlyHeader)
+		if (isOnlyHeader) {
 			console.log(
 				chalk.yellow(
 					"File has only one row! Keys will be created, but values will be null.",
 				),
 			);
-		else types = getTypes(rows[1].split(","));
+			types = new Array(rows[0].split(",").length).fill("Null");
+		} else types = getTypes(rows[1].split(","));
 
 		const keys = rows[0].split(",");
 		const values = isOnlyHeader
@@ -77,7 +78,11 @@ program
 			return obj;
 		});
 
-		await Bun.write(jsonFile, JSON.stringify({ data }, null, 2));
+		try {
+			await Bun.write(jsonFile, JSON.stringify({ data }, null, 2));
+		} catch (error) {
+			console.log(chalk.red(`Error writing to file ${jsonFile.name}!`));
+		}
 	});
 
 program

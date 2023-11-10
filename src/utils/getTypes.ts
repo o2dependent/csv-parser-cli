@@ -13,7 +13,7 @@ export const getTypes = (values: string[]): AllTypes[] => {
 	const types: AllTypes[] = [];
 	for (const value of values) {
 		const type = getType(value);
-		if (!types.includes(type)) types.push(type);
+		types.push(type);
 	}
 	return types;
 };
